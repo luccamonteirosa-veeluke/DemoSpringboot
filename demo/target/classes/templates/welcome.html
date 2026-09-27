@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmação de Cadastro</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            color: #1a1a1a;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        p.subtitle {
+            color: #666666;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .details {
+            text-align: left;
+            background-color: #f8f9fa;
+            padding: 18px;
+            border-radius: 8px;
+            border-left: 4px solid #0066cc;
+            margin-bottom: 24px;
+        }
+
+        .details p {
+            margin-bottom: 10px;
+            color: #333333;
+            font-size: 14px;
+        }
+
+        .details p:last-child {
+            margin-bottom: 0;
+        }
+
+        .btn-back {
+            display: inline-block;
+            text-decoration: none;
+            background-color: #0066cc;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background-color 0.2s;
+        }
+
+        .btn-back:hover {
+            background-color: #0052a3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h1>Bem-vindo(a), <span th:text="${user.firstName} + ' ' + ${user.lastName}">Usuário</span>!</h1>
+    <p class="subtitle">Seus dados foram enviados com sucesso:</p>
+
+    <div class="details">
+        <p><strong>E-mail:</strong> <span th:text="${user.email}">email@exemplo.com</span></p>
+        <p><strong>Data de Nascimento:</strong> <span th:text="${user.dob}">01/01/2000</span></p>
+        <p><strong>Gênero:</strong> <span th:text="${user.gender}">Masculino</span></p>
+    </div>
+
+    <a href="/" class="btn-back">Novo Cadastro</a>
+</div>
+
+</body>
+</html>

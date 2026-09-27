@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Usuário</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .card {
+            background: #ffffff;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            width: 100%;
+            max-width: 450px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 24px;
+            color: #1a1a1a;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: #444444;
+            font-size: 14px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="date"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #cccccc;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: border-color 0.2s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #0066cc;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            margin-top: 6px;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: normal;
+            cursor: pointer;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.2s;
+        }
+
+        button:hover {
+            background-color: #0052a3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>Cadastro de Usuário</h2>
+
+    <form th:action="@{/register}" th:object="${user}" method="post">
+
+        <div class="form-group">
+            <label for="firstName">Primeiro Nome:</label>
+            <input type="text" id="firstName" th:field="*{firstName}" placeholder="Digite seu primeiro nome" required>
+        </div>
+
+        <div class="form-group">
+            <label for="lastName">Sobrenome:</label>
+            <input type="text" id="lastName" th:field="*{lastName}" placeholder="Digite seu sobrenome" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" th:field="*{email}" placeholder="seuemail@exemplo.com" required>
+        </div>
+
+        <div class="form-group">
+            <label for="dob">Data de Nascimento:</label>
+            <input type="date" id="dob" th:field="*{dob}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Senha:</label>
+            <input type="password" id="password" th:field="*{password}" placeholder="Sua senha" required>
+        </div>
+
+        <div class="form-group">
+            <label>Gênero:</label>
+            <div class="radio-group">
+                <label class="radio-option">
+                    <input type="radio" th:field="*{gender}" value="Masculino" required> Masculino
+                </label>
+                <label class="radio-option">
+                    <input type="radio" th:field="*{gender}" value="Feminino"> Feminino
+                </label>
+            </div>
+        </div>
+
+        <button type="submit">Cadastrar</button>
+    </form>
+</div>
+
+</body>
+</html>
